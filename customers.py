@@ -39,16 +39,38 @@ for something in customer:
     print(something, ":", customer[something])
 
 print("--- Exercise 5: Lookup Table ---")
+tier_discounts = {
+    "bronze": 0,
+     "silver": 0.05, 
+     "gold": 0.1, 
+     "platinum": 0.15
+}
 
-
+purchase = 300
+discount_rate = tier_discounts.get(customer["tier"], 0)
+final_price = purchase * (1 - discount_rate)
+print(f"Tier: {customer['tier']}")
+print(f"Discount Rate: {discount_rate * 100}%")
+print(f"Final Price: ${final_price:.2f}")
 
 print("--- Exercise 6: List of Dicts ---")
-
-
+customers = [ 
+    {"name": "Bob", "tier": "silver", "ytd_spend": 1200},
+    {"name": "Carol", "tier": "gold", "ytd_spend": 2500},
+    {"name": "David", "tier": "bronze", "ytd_spend": 500},
+]
+for record in customers:
+    rate = tier_discounts.get(record["tier"], 0)
+    discount = 300 * rate
+    print(f"{record['name']} ({record['tier']}): ${discount:.2f} off a $300 purchase")
 
 print("--- Exercise 7: Nested Catalog ---")
-
-
+catalog = {
+    "Widget A": {"price": 9.99, "stock": 150},
+    "Gadget C": {"price": 49.99, "stock": 8},
+}
+for name, details in catalog.items():
+    print(f"LOW STOCK: {name} -- only {details['stock']} left")
 
 print("--- Exercise 8: Sales by Region ---")
 
